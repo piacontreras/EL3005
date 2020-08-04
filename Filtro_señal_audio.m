@@ -1,4 +1,4 @@
-%Pía Contreras Guerrero
+%PÃ­a Contreras Guerrero
 %Pregunta 1
 %Carga del archivo
 load('audio_signal.mat', 'audio')
@@ -13,7 +13,7 @@ l=-retardo/2:1:retardo/2;
 %calculo coeficientes de la ventana rectangular
 coef_1=(5050/fs)*2; 
 coef_2=(4950/fs)*2; 
-%en la ecuación
+%en la ecuaciÃ³n
 cm=coef_2.*sinc(coef_2.*l)+sinc(l)-coef_1.*sinc(coef_1.*l);
 %calculo coeficientes ventana de hamming
 h=length(l) ;
@@ -51,30 +51,30 @@ xlabel 'Frecuencia [Hz]'
 ylabel '|fft|'
 hold off
 
-%señal sin filtro
+%seÃ±al sin filtro
 fvtool(audio)
-title 'FFT de la señal sin filtro'
+title 'FFT de la seÃ±al sin filtro'
 xlabel 'Frecuencia [Hz]'
 ylabel '|fft|'
 
-%señal filtrada con ventana rectangular
+%seÃ±al filtrada con ventana rectangular
 a_R=filter(cm,1,audio);
-%señal filtrada con ventana de hamming
+%seÃ±al filtrada con ventana de hamming
 a_H=filter(cm_H,1,audio);
 
-%señal filtrada con ventana rectangular
+%seÃ±al filtrada con ventana rectangular
 fvtool(a_R)
-title 'FFT de la señal con filtro rectangular'
+title 'FFT de la seÃ±al con filtro rectangular'
 xlabel 'Frecuencia [Hz]'
 ylabel '|fft|'
 
-%señal filtrada con ventana hamming
+%seÃ±al filtrada con ventana hamming
 fvtool(a_H)
-title 'FFT de la señal con filtro hamming'
+title 'FFT de la seÃ±al con filtro hamming'
 xlabel 'Frecuencia [Hz]'
 ylabel '|fft|'
 
-%canción sin ruido
+%canciÃ³n sin ruido
 soundsc(a_H,fs);
 
 
