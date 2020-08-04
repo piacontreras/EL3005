@@ -1,26 +1,26 @@
-%PÌa Contreras Guerrero
+%P√≠a Contreras Guerrero
 %P2 parte a
 %Abrimos la imagen original de acuerdo al hint en la tarea
 I = imread('cameraman.jpg');
-%Hacemos ConvoluciÛn 2D como indica el enunciado
+%Hacemos Convoluci√≥n 2D como indica el enunciado
 C = double(I(:,:,1));
 %Extendemos hacia afuera filas tal como dice el enunciado
 C1 = [C(:,1),C(:,1),C(:,1),C,C(:,512),C(:,512),C(:,512)];
 %Extendemos hacia afuera columnas tal como dice el enunciado
 C2 = [C1(1,:);C1(1,:);C1(1,:);C1;C1(512,:);C1(512,:);C1(512,:)];
-%El filtro a matriz, se normaliza por cero, pues la suma de sus dÌgitos es
+%El filtro a matriz, se normaliza por cero, pues la suma de sus d√≠gitos es
 %cero
 f=[0 0 -1 -1 -1 0 0; 0 -1 -3 -3 -3 -1 0; -1 -3 0 7 0 -3 -1; -1 -3 7 24 7 -3 -1; -1 -3 0 7 0 -3 -1; 0 -1 -3 -3 -3 -1 0; 0 0 -1 -1 -1 0 0];
-%El tamaÒo de la matriz resultante para poder hacer el recorrido est· dado por
+%El tama√±o de la matriz resultante para poder hacer el recorrido est√° dado por
 t=size(C2);
-%Fijando la matriz A como una reserva de memoria del tamaÒo de C pero
+%Fijando la matriz A como una reserva de memoria del tama√±o de C pero
 %anulando sus elementos
 A = C*0;
-%Recorremos la matriz en sus filas y columnas para realizar la convoluciÛn
-%Adem·s recordando desde donde inicia el filtro
-%tamaÒo en filas
+%Recorremos la matriz en sus filas y columnas para realizar la convoluci√≥n
+%Adem√°s recordando desde donde inicia el filtro
+%tama√±o en filas
 for i = 4:t(1)-3;
-    %tamaÒo en columnas
+    %tama√±o en columnas
     for j = 4:t(2)-3;
         %recorriendo la imagen en sus filas y columnas
         n = C2(i-3:i+3,j-3:j+3);
@@ -28,9 +28,9 @@ for i = 4:t(1)-3;
         %imagen con el filtro
         convolucion = n.*f;
         %se hace una doble sumatoria (filas y columnas) de la imagen con su filtro para
-        %obtener la convoluciÛn final
+        %obtener la convoluci√≥n final
         conv_final = sum(sum(convolucion));
-        %asignaciÛn para la matriz A
+        %asignaci√≥n para la matriz A
         A(i-3,j-3) = conv_final;
     end
 end
